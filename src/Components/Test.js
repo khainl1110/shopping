@@ -1,12 +1,15 @@
 import React, {useContext} from "react"
 import MyContext from "../Contexts/MyContext"
 export default function Test(props){
-    var data = useContext(MyContext)
+    var [name,setName] = useContext(MyContext)
     return(
         <div>
             {
-                (data==="testing") ? <h2>Testing succeeded!</h2> : <h2>Testing failed</h2>
+                (name==="Khai") ? <h2>Testing succeeded!</h2> : <h2>Testing failed</h2>
+                
             }
+            <h3>{name}</h3>
+            <button onClick={()=> setName("haha")}> Change name</button>
         </div>
     )
 }
