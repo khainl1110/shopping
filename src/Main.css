@@ -6,3 +6,22 @@
 .m-10{
     margin: 10px;
 }
+
+nav{
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li{
+    list-style: none;
+}
+nav li a{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(210, 105, 30);
+}
+
+h1{
+    color:  rgb(78, 39, 11);
+}

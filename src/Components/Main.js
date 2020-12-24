@@ -3,15 +3,16 @@ import React, {useState, useEffect} from "react";
 import MyContext from "../Contexts/MyContext"
 
 import Header from "./Header"
-import Test from "./Test";
 import Order from "./Order";
+import Cart from "./Cart";
 
 import "../Main.css"
 
 export default function Main(props){
     var [orders, setOrders] = useState([])
     var [cart, setCart] =  useState([])
-    var [name, setName] = useState("Khai")
+    var [screen, setScreen] = useState(0)
+
     useEffect(() => {
         fetch("https://quiet-everglades-39046.herokuapp.com/orders")
             .then(response => response.json())
@@ -23,17 +24,23 @@ export default function Main(props){
     return(
         <MyContext.Provider value={[cart, setCart]}>
             <Header/>
-            <div className="container">
+            <nav>
+                <li><a href="#" onClick={() => setScreen(0)}>Market</a></li>
+                <li><a href="#" onClick={() => setScreen(1)}>Your cart</a></li>
+            </nav>
+
+            {
+                (screen === 0) ? 
+                <div className="container">
                 {
                     orders.map(order => 
                         <Order order={order}/>)
                 }
-            </div>
-            <p>Testing {cart.length}</p>
-           {
-               cart.map(item =>
-                <p>{item.name} and {item.quantity}</p>)
-           }
+                </div> :
+                <Cart/>
+            }
+            
+           
         </MyContext.Provider>
         
     )
