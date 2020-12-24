@@ -10,18 +10,18 @@ import "../Main.css"
 
 export default function Main(props){
     var [orders, setOrders] = useState([])
-    var [cart, setCart] =  useState(new Map())
+    var [cart, setCart] =  useState([])
     var [name, setName] = useState("Khai")
     useEffect(() => {
         fetch("https://quiet-everglades-39046.herokuapp.com/orders")
             .then(response => response.json())
             .then(res => {
                 setOrders(res)
-            }) 
+            })
     },[])
 
     return(
-        <MyContext.Provider value={[name, setName]}>
+        <MyContext.Provider value={[cart, setCart]}>
             <Header/>
             <div className="container">
                 {
@@ -29,7 +29,11 @@ export default function Main(props){
                         <Order order={order}/>)
                 }
             </div>
-            <Test/>
+            <p>Testing {cart.length}</p>
+           {
+               cart.map(item =>
+                <p>{item.name} and {item.quantity}</p>)
+           }
         </MyContext.Provider>
         
     )
