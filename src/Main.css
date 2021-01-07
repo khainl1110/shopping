@@ -25,3 +25,12 @@ nav li a{
 h1{
     color:  rgb(78, 39, 11);
 }
+
+
+.horizontal-flex-container > input{
+    width: 30%;
+    text-align: center;
+}
+.horizontal-flex-container > button{
+    width: 30%;
+}
