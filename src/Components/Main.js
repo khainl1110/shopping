@@ -20,8 +20,8 @@ export default function Main(props){
                 setOrders(res)
                 //do this after the previous cart because the orders might not been set
                 var newCart = [...cart]
-                newCart.push({item: res[0],quantity: 2})
-                newCart.push({item: res[3], quantity: 3})
+                newCart.push({item: res[0],quantity: 2, subTotal: res[0].price *2})
+                newCart.push({item: res[3], quantity: 3, subTotal: res[3].price * 3})
                 setCart(newCart)
             })
     },[])
