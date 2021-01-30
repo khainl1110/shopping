@@ -42,14 +42,13 @@ h1{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 20px;
+    margin: 10px;
     padding: 20px
 }
 
 .orders-container{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; /* so that it will go down when you need it */
+    flex-direction: column;
 }
 
 .dynamic-bg:nth-child(odd){

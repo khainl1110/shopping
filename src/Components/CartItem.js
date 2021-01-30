@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import {AiOutlineArrowUp, AiOutlineArrowDown} from 'react-icons/ai';
-import {FaBars} from 'react-icons/fa'
 export default function CartItem(props){
+    var [orderQuantity, setOrderQuantity] = useState(props.order.quantity)
+
+    function changeQuantity(e) {
+        setOrderQuantity(e.target.value)
+    }
     return(
         <div className="order-container dynamic-bg">
             <div>
@@ -14,10 +18,15 @@ export default function CartItem(props){
                 <p>Quantity:</p>
                 <div className="quantity-control">
                     <button className = "transparent-bg"><AiOutlineArrowUp /></button>
-                    <p>{props.order.quantity}</p>
+                    <select value = {orderQuantity} onChange = {changeQuantity}>
+                    {
+                        [...Array(10)].map((_,i) => 
+                            <option value = {i}>{i}</option>)
+                    }
+                    </select>
                     <button className = "transparent-bg"><AiOutlineArrowDown/> </button>
                 </div>
-                
+                <h4>Subtotal: ${orderQuantity * props.order.item.price}</h4>
             </div>
         </div>
     )
