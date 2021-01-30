@@ -7,18 +7,21 @@ export default function Order(props){
 
     function addItem(){
         var added = false
-        cart.map(item => {
-            if(item.name===props.order.name) {
-                var newCart = [...cart]
-                newCart[newCart.indexOf(item)].quantity+=parseInt(tempQuantity)
-                setCart(newCart)
-                alert("Added!")
-                added = true
-            }
-        })
+            cart.map(order => {
+                //if the order name is already inside cart, then alert 'added!'
+                if(order.item.name===props.order.name) {
+                    var newCart = [...cart]
+                    newCart[newCart.indexOf(order)].quantity+=parseInt(tempQuantity)
+                    setCart(newCart)
+                    alert("Added!")
+                    added = true
+                }
+            })
+        
+        //if not added, alert "added new item"
         if(!added){
             var newCart = [...cart]
-            newCart.push({name: props.order.name, quantity: tempQuantity})
+            newCart.push({item: props.order, quantity: tempQuantity})
             setCart(newCart)
             alert("Added new item!")
         }
@@ -28,15 +31,21 @@ export default function Order(props){
     }
     
     return(
-        <div class="m-10">
+        
+        <div class="m-10 dynamic-bg">
+            <a href="#">
             <img src={props.order.href} alt={props.order.name} width="300" height="250"/>
             <p>{props.order.name}</p>
+            <p>Price: ${props.order.price}</p> 
+            <p>Unit: {props.order.unit}</p>
             {
                 <div className = "horizontal-flex-container">
                     <input type="Number" value={tempQuantity} onChange={handleInputChange}/>
                     <button onClick = {addItem}> Add </button>
                 </div>
             }
+            </a>
         </div>
+        
     )
 }

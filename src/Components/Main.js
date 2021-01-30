@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import MyContext from "../Contexts/MyContext"
 
 import Header from "./Header"
-import Order from "./Order";
+import Item from "./Item";
 import Cart from "./Cart";
 
 import "../Main.css"
@@ -18,6 +18,11 @@ export default function Main(props){
             .then(response => response.json())
             .then(res => {
                 setOrders(res)
+                //do this after the previous cart because the orders might not been set
+                var newCart = [...cart]
+                newCart.push({item: res[0],quantity: 2})
+                newCart.push({item: res[3], quantity: 3})
+                setCart(newCart)
             })
     },[])
 
@@ -34,7 +39,7 @@ export default function Main(props){
                 <div className="container">
                 {
                     orders.map(order => 
-                        <Order order={order}/>)
+                        <Item order={order}/>)
                 }
                 </div> :
                 <Cart/>

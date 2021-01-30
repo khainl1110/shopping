@@ -3,6 +3,9 @@
     flex-wrap: wrap;
 }
 
+.container a {
+    text-decoration: none;
+}
 .m-10{
     margin: 10px;
 }
@@ -19,13 +22,12 @@ nav li a{
     text-decoration: none;
     font-weight: 500;
     font-size: 20px;
-    color: rgb(210, 105, 30);
+    color: black;
 }
 
 h1{
     color:  rgb(78, 39, 11);
 }
-
 
 .horizontal-flex-container > input{
     width: 30%;
@@ -33,4 +35,47 @@ h1{
 }
 .horizontal-flex-container > button{
     width: 30%;
+}
+
+.order-container{
+    width: 20vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 20px
+}
+
+.orders-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* so that it will go down when you need it */
+}
+
+.dynamic-bg:nth-child(odd){
+    background-color: aquamarine;
+}
+
+.dynamic-bg:nth-child(even){
+    background: aliceblue;
+}
+
+.transparent-bg{
+    background: transparent;
+    border-color: rgba(148, 112, 44, 0.815);
+    border-radius: 20px;
+}
+
+.quantity-control{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.quantity-control button{
+    animation-duration: .5s;
+}
+
+.quantity-control button:active{
+    background-color: gray;
 }
